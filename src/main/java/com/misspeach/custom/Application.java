@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 @ServletComponentScan
 public class Application extends SpringBootServletInitializer {
-
+    //程序启动
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
