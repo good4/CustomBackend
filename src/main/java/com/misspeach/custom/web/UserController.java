@@ -1,5 +1,9 @@
 package com.misspeach.custom.web;
 
+import com.misspeach.custom.entity.user.User;
+import com.misspeach.custom.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,9 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class UserController {
+    //自动注入
+    @Autowired
+    UserService userService;
+    //可以在用的时候用value使用,也可以在config类中事先配置
+    @Value("${hello}")
+    Long hello;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String user() {
-        return "hello";
+    //get方法用于从服务器上获取数据,将请求参数都要放在URL中 ?参数名
+    //post方法用于上传数据
+    public Object user(String userName) {
+
+        //User user = userService.getOne(userName);
+        User user=new User();
+        user.setId(123L);
+        user.setUsername("abc");
+        return user;
     }
 }
