@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserJpaRepository extends JpaRepository<User, Long> {
 
     //这种SQL语法叫做JPQL, u 是 User表的别名 ,　?1代表 User表中的第一个字段
-    @Query("select u from User u where u.username=?2")
+    @Query("select u from User u where u.username=?1")
 
     //简单查询可以自动根据字段生成
     User findOneByUsername(String username);

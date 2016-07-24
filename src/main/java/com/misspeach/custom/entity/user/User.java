@@ -3,6 +3,7 @@ package com.misspeach.custom.entity.user;
 import com.misspeach.custom.entity.custom.Custom;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jiangtengfei on 16/7/20.
@@ -31,8 +32,8 @@ public class User {
 
     private String signature;
 
-    //在这个表中是外键,自动生成
-
+    @OneToMany(mappedBy = "user")
+    private List<Custom> customs;
 
     public String getPassword() {
         return password;

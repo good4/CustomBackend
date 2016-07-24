@@ -4,6 +4,7 @@ import com.misspeach.custom.entity.user.User;
 import com.misspeach.custom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ public class UserController {
     //自动注入
     @Autowired
     UserService userService;
+
     //可以在用的时候用value使用,也可以在config类中事先配置
     @Value("${hello}")
     Long hello;
@@ -26,10 +28,7 @@ public class UserController {
     //post方法用于上传数据
     public Object user(String userName) {
 
-        //User user = userService.getOne(userName);
-        User user=new User();
-        user.setId(123L);
-        user.setUsername("abc");
+        User user = userService.getOne(userName);
         return user;
     }
 }

@@ -17,22 +17,23 @@ public class Custom {
 
     private String category;
 
-    private int target;
+    private int target_day;
 
-    private int insist;
+    private int insist_day;
 
-    private int max;
+    private int max_day;
 
-    private String alarmTime;
-//    //外键
-//    private User user;
+    private String alarm_time;
+    //外键
+    @ManyToOne
+    private User user;
 
-    public Custom(String category, int target, int insist, int max, String alarmTime) {
-        this.category = category;
-        this.target = target;
-        this.insist = insist;
-        this.max = max;
-        this.alarmTime = alarmTime;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCategory() {
@@ -43,43 +44,35 @@ public class Custom {
         this.category = category;
     }
 
-    public int getTarget() {
-        return target;
+    public int getTarget_day() {
+        return target_day;
     }
 
-    public void setTarget(int target) {
-        this.target = target;
+    public void setTarget_day(int target_day) {
+        this.target_day = target_day;
     }
 
-    public int getInsist() {
-        return insist;
+    public int getInsist_day() {
+        return insist_day;
     }
 
-    public void setInsist(int insist) {
-        this.insist = insist;
+    public void setInsist_day(int insist_day) {
+        this.insist_day = insist_day;
     }
 
-    public int getMax() {
-        return max;
+    public int getMax_day() {
+        return max_day;
     }
 
-    public void setMax(int max) {
-        this.max = max;
+    public void setMax_day(int max_day) {
+        this.max_day = max_day;
     }
 
-    public String getAlarmTime() {
-        return alarmTime;
+    public String getAlarm_time() {
+        return alarm_time;
     }
 
-    public void setAlarmTime(String alarmTime) {
-        this.alarmTime = alarmTime;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setAlarm_time(String alarm_time) {
+        this.alarm_time = alarm_time;
     }
 }

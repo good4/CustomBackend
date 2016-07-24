@@ -14,7 +14,7 @@ public class Help {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String question;
 
     private String resolution;
 
@@ -26,12 +26,12 @@ public class Help {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public String getResolution() {
