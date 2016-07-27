@@ -5,6 +5,8 @@ import com.misspeach.custom.entity.user.jpa.UserJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by jiangtengfei on 16/7/20.
  */
@@ -17,8 +19,9 @@ public class UserService {
     @Autowired
     UserJpaRepository userJpaRepository;
 
-    public User getOne(String userName) {
-//        return userJpaRepository.findOne(userId);
-        return userJpaRepository.findOneByUsername(userName);
-    }
+//    public List<User> getUserCustoms(String userName) {
+////        return userJpaRepository.findOne(userId);
+//        List<User> userCustoms=userJpaRepository.findByUsername(userName);
+//        return userCustoms;
+//    }
 }

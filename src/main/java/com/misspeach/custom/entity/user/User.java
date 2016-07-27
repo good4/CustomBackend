@@ -14,10 +14,10 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private  Long id;
 
     @Column( nullable = true, unique = true)
-    private String username;
+    private String user_name;
 
     @Column(nullable = true)
     private String password;
@@ -32,8 +32,18 @@ public class User {
 
     private String signature;
 
-    @OneToMany(mappedBy = "user")
+    //外键
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name="user_id")
     private List<Custom> customs;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getPassword() {
         return password;
@@ -83,19 +93,19 @@ public class User {
         this.signature = signature;
     }
 
-    public Long getId() {
-        return id;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public String getUsername() {
-        return username;
+    public List<Custom> getCustoms() {
+        return customs;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCustoms(List<Custom> customs) {
+        this.customs = customs;
     }
 }

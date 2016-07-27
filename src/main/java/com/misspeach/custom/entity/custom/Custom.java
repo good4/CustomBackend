@@ -2,6 +2,7 @@ package com.misspeach.custom.entity.custom;
 
 import com.misspeach.custom.entity.user.User;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 /**
@@ -15,6 +16,8 @@ public class Custom {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String custom_name;
+
     private String category;
 
     private int target_day;
@@ -24,9 +27,6 @@ public class Custom {
     private int max_day;
 
     private String alarm_time;
-    //外键
-    @ManyToOne
-    private User user;
 
     public Long getId() {
         return id;
@@ -34,6 +34,14 @@ public class Custom {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCustom_name() {
+        return custom_name;
+    }
+
+    public void setCustom_name(String custom_name) {
+        this.custom_name = custom_name;
     }
 
     public String getCategory() {
