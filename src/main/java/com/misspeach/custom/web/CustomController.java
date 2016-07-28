@@ -21,17 +21,28 @@ public class CustomController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getUserCustoms(String userName){
+        //System.out.println("connect!!!!");
         List<Custom> customList=customService.getUserCustoms(userName);
-        //Log.debug(String.valueOf(customList.size()));
-        System.out.println(String.valueOf(customList.size()));
         String []res=new String[customList.size()];
+        String tmpStr="[";
         for(int i=0;i<customList.size();i++){
-            res[i]=(customList.get(i).getCustom_name()+"|"+customList.get(i).getAlarm_time()+"|"+customList.get(i).getMax_day()+"|");
-            res[i]+=customService.getImageUrl(customList.get(i).getCategory());
-//            Log.debug(userName+"的第"+i+"个习惯是: "+res[i]);
-            System.out.println(userName+"的第"+i+"个习惯是: "+res[i]);
+            Custom c=customList.get(i);
+            String custom_name=c.getCustom_name();
+            String alarm_time=c.getAlarm_time();
+            String insist_day=String.valueOf(c.getInsist_day());
+
+            res[i]=(customList.get(i).getCustom_name()+"|"+customList.get(i).getAlarm_time()+"|"+customList.get(i).getInsist_day()+"|");
+            res[i]+=customService.getImageUrl(c.getCategory());
+
+            String image_url=customService.getImageUrl(c.getCategory());
+            tmpStr+="{\"custom_name\":\""+custom_name+"\",\"alarm_time\":\""+alarm_time+"\",\"insist_day\":\""+insist_day+"\",\"image_url\":\""+image_url+"\"}";
+            if(i!=customList.size()-1)
+                tmpStr+=",";
+            else
+                tmpStr+="]";
+            //System.out.println(tmpStr);
+            //tmpStr="";
         }
-//        String customImage="";
-        return "first";
+        return tmpStr;
     }
 }

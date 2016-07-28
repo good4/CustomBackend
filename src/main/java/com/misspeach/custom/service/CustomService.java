@@ -28,7 +28,7 @@ public class CustomService {
         //System.out.println("in customService :"+user.getSignature());
         //System.out.println(user.getCustoms().size());
         //List<Custom> userCustoms= user.getCustoms();
-        System.out.println(String.valueOf(customs.size()));
+        //System.out.println(String.valueOf(customs.size()));
         return customs;
     }
     public String getImageUrl(String category){

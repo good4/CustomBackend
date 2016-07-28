@@ -19,12 +19,14 @@ public class Custom {
     private String custom_name;
 
     private String category;
-
+    //目标天数
     private int target_day;
-
+    //当前完成天数
     private int insist_day;
-
-    private int max_day;
+    //最大连续天数
+    private int max_insist_day;
+    //当前连续天数
+    private int current_insist_day;
 
     private String alarm_time;
 
@@ -68,12 +70,20 @@ public class Custom {
         this.insist_day = insist_day;
     }
 
-    public int getMax_day() {
-        return max_day;
+    public int getMax_insist_day() {
+        return max_insist_day;
     }
 
-    public void setMax_day(int max_day) {
-        this.max_day = max_day;
+    public void setMax_insist_day(int max_insist_day) {
+        this.max_insist_day = max_insist_day;
+    }
+
+    public int getCurrent_insist_day() {
+        return current_insist_day;
+    }
+
+    public void setCurrent_insist_day(int current_insist_day) {
+        this.current_insist_day = current_insist_day;
     }
 
     public String getAlarm_time() {

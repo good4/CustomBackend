@@ -32,6 +32,8 @@ public class User {
 
     private String signature;
 
+    private String image;
+
     //外键
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name="user_id")
@@ -107,5 +109,12 @@ public class User {
 
     public void setCustoms(List<Custom> customs) {
         this.customs = customs;
+    }
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
