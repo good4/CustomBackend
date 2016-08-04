@@ -1,9 +1,11 @@
 package com.misspeach.custom.entity.custom;
 
+import com.misspeach.custom.entity.record.Record;
 import com.misspeach.custom.entity.user.User;
 
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by shizhan on 16/7/22.
@@ -29,6 +31,11 @@ public class Custom {
     private int current_insist_day;
 
     private String alarm_time;
+
+    //外键
+    @OneToMany
+    @JoinColumn(name="custom_id")
+    private List<Record> records;
 
     public Long getId() {
         return id;

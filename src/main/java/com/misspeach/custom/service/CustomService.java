@@ -19,6 +19,8 @@ public class CustomService {
     UserJpaRepository userJpaRepository;
     @Autowired
     CategoryJpaRepository categoryJpaRepository;
+    @Autowired
+    CustomJpaRepository customJpaRepository;
 /*
 * 根据用户名查询该用户的习惯
 * */
@@ -35,5 +37,18 @@ public class CustomService {
 
         String imageUrl=categoryJpaRepository.findImageBycategory(category);
         return imageUrl;
+    }
+    public User getUser(String userName){
+        return userJpaRepository.findUserByUsername(userName);
+    }
+    /*
+    * 根据用户ID,习惯名,目标坚持时间,分类和提醒时间创建一条新的习惯
+    * */
+    public void insertCustom(Long userId,String customName,int targetDay,String category,String alarm_time){
+        customJpaRepository.insertCustom(userId,customName,targetDay,category,alarm_time);
+        //customJpaRepository.save(userId,customName,targetDay,category,alarm_time);
+    }
+    public void save(Custom custom){
+        customJpaRepository.save(custom);
     }
 }

@@ -19,9 +19,7 @@ public class UserService {
     @Autowired
     UserJpaRepository userJpaRepository;
 
-//    public List<User> getUserCustoms(String userName) {
-////        return userJpaRepository.findOne(userId);
-//        List<User> userCustoms=userJpaRepository.findByUsername(userName);
-//        return userCustoms;
-//    }
+    public void save(User user){
+        userJpaRepository.save(user);
+    }
 }

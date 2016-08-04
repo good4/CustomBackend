@@ -20,7 +20,6 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     List<Custom> findByUsername(String username);
 
     @Query("select u from User u where u.user_name=?1")
-        //简单查询可以自动根据字段生成
-    User findCustomByUsername(String username);
+    User findUserByUsername(String username);
 
 }
