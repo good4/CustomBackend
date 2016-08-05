@@ -24,9 +24,18 @@ public class CustomService {
 /*
 * 根据用户名查询该用户的习惯
 * */
-    public List<Custom> getUserCustoms(String userName) {
+    public List<Custom> getUserCustomsByName(String userName) {
 //        User user=userJpaRepository.findByUsername(userName);
         List<Custom> customs=userJpaRepository.findByUsername(userName);
+        //System.out.println("in customService :"+user.getSignature());
+        //System.out.println(user.getCustoms().size());
+        //List<Custom> userCustoms= user.getCustoms();
+        //System.out.println(String.valueOf(customs.size()));
+        return customs;
+    }
+    public List<Custom> getUserCustomsById(Long userId) {
+//        User user=userJpaRepository.findByUsername(userName);
+        List<Custom> customs=userJpaRepository.findByUserId(userId);
         //System.out.println("in customService :"+user.getSignature());
         //System.out.println(user.getCustoms().size());
         //List<Custom> userCustoms= user.getCustoms();
@@ -38,8 +47,11 @@ public class CustomService {
         String imageUrl=categoryJpaRepository.findImageBycategory(category);
         return imageUrl;
     }
-    public User getUser(String userName){
+    public User getUserByUsername(String userName){
         return userJpaRepository.findUserByUsername(userName);
+    }
+    public User getUserByUserId(Long userId){
+        return userJpaRepository.findUserByUserId(userId);
     }
     /*
     * 根据用户ID,习惯名,目标坚持时间,分类和提醒时间创建一条新的习惯

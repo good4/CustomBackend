@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,11 +35,16 @@ public class CustomController {
     List<Custom> customList=null;
     User user=null;
     String user_Id="";
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getUserCustoms(String userName){
 
-        customList=customService.getUserCustoms(userName);
-        user=customService.getUser(userName);
+        customList=customService.getUserCustomsByName(userName);
+        user=customService.getUserByUsername(userName);
+//        if(user==null)
+//            System.out.println("user is null");
+//        else
+//            System.out.println("user not null");
         user_Id=String.valueOf(user.getId());
 
         String tmpStr="[";
@@ -61,7 +68,7 @@ public class CustomController {
                 tmpStr+=",";
             else
                 tmpStr+="]";
-            System.out.println(tmpStr);
+            //System.out.println(tmpStr);
             //tmpStr="";
         }
         //System.out.println(tmpStr);
@@ -70,12 +77,20 @@ public class CustomController {
 
     @RequestMapping(value = "/custom", method = RequestMethod.GET)
     public String isExist(String userName,String customName){
+        String userNameDecode="";
+        String customNameDecode="";
+        try {
+            userNameDecode= URLDecoder.decode(userName,"utf-8");
+            customNameDecode=URLDecoder.decode(customName,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 //        Log.debug("in isExist");
         //System.out.println("in is exist");
         String re="{\"isExist\":\"custom not exist\"}";
-        List<Custom> customList=customService.getUserCustoms(userName);
+        List<Custom> customList=customService.getUserCustomsByName(userNameDecode);
         for(Custom custom:customList){
-            if(custom.getCustom_name().equals(customName))
+            if(custom.getCustom_name().equals(customNameDecode))
             {
                 re="{\"isExist\":\"custom exist\"}";
             }
@@ -100,9 +115,12 @@ public class CustomController {
         custom.setCategory(category);
         custom.setTarget_day(Integer.valueOf(targetDay));
         custom.setCustom_name(customName);
+
+        customList=customService.getUserCustomsById(Long.valueOf(userId));
         customList.add(custom);
 
-        //user.setId(Long.valueOf(userId));
+
+        user=customService.getUserByUserId(Long.valueOf(userId));
         user.setCustoms(customList);
         userService.save(user);
 
