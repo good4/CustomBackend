@@ -33,6 +33,9 @@ public class CustomService {
         //System.out.println(String.valueOf(customs.size()));
         return customs;
     }
+    /*
+    * 根据用户ID查用户习惯
+    * */
     public List<Custom> getUserCustomsById(Long userId) {
 //        User user=userJpaRepository.findByUsername(userName);
         List<Custom> customs=userJpaRepository.findByUserId(userId);
@@ -42,24 +45,41 @@ public class CustomService {
         //System.out.println(String.valueOf(customs.size()));
         return customs;
     }
+    /*
+    * 根据习惯分类查分类图标URL
+    * */
     public String getImageUrl(String category){
 
         String imageUrl=categoryJpaRepository.findImageBycategory(category);
         return imageUrl;
     }
+    /*
+    * 根据用户名查对应用户
+    * */
     public User getUserByUsername(String userName){
         return userJpaRepository.findUserByUsername(userName);
     }
+    /*
+    * 根据用户ID查对应用户
+    * */
     public User getUserByUserId(Long userId){
         return userJpaRepository.findUserByUserId(userId);
     }
     /*
-    * 根据用户ID,习惯名,目标坚持时间,分类和提醒时间创建一条新的习惯
+    * 根据习惯ID查对应习惯
     * */
-    public void insertCustom(Long userId,String customName,int targetDay,String category,String alarm_time){
-        customJpaRepository.insertCustom(userId,customName,targetDay,category,alarm_time);
-        //customJpaRepository.save(userId,customName,targetDay,category,alarm_time);
+    public Custom getCustomsByCustomId(Long customId){
+        return customJpaRepository.findByCustomId(customId);
     }
+    /*
+    * 删除一条习惯
+    * */
+    public void delete(Custom custom){
+        customJpaRepository.delete(custom);
+    }
+    /*
+    * 保存对习惯的修改
+    * */
     public void save(Custom custom){
         customJpaRepository.save(custom);
     }

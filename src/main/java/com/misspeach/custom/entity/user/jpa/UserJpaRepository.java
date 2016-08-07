@@ -14,7 +14,7 @@ import java.util.List;
 //继承了JpaRespository , user 是实体 , Long 是主键
 public interface UserJpaRepository extends JpaRepository<User, Long> {
 
-    //这种SQL语法叫做JPQL, u 是 User表的别名 ,　?1代表 User表中的第一个字段
+    //这种SQL语法叫做JPQL, u 是 User表的别名 ,　?1代表第一个参数
     @Query("select u.customs from User u where u.user_name=?1")
     //简单查询可以自动根据字段生成
     List<Custom> findByUsername(String username);

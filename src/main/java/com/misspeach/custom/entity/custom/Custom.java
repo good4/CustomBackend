@@ -33,7 +33,7 @@ public class Custom {
     private String alarm_time;
 
     //外键
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name="custom_id")
     private List<Record> records;
 
