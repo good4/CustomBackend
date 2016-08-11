@@ -1,5 +1,6 @@
 package com.misspeach.custom.service;
 
+import com.misspeach.custom.entity.custom.Custom;
 import com.misspeach.custom.entity.user.User;
 import com.misspeach.custom.entity.user.jpa.UserJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,20 @@ public class UserService {
 
     @Autowired
     UserJpaRepository userJpaRepository;
+    public void save(User user){
+
+        userJpaRepository.save(user);
+    }
+    public User findUserByUsername(String userName){
+
+        return  userJpaRepository.findUserByUsername(userName);
+
+    }
+    public String getPassword(String username){
+        String password = userJpaRepository.findPasswordByUsername(username);
+        return   password;
+    }
+
 
 //    public List<User> getUserCustoms(String userName) {
 ////        return userJpaRepository.findOne(userId);

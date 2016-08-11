@@ -36,4 +36,5 @@ public class CustomService {
         String imageUrl=categoryJpaRepository.findImageBycategory(category);
         return imageUrl;
     }
+
 }
