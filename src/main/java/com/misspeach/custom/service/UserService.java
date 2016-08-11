@@ -32,9 +32,4 @@ public class UserService {
         String password = userJpaRepository.findPasswordByUsername(username);
         return   password;
     }
-
-
-    public void save(User user){
-        userJpaRepository.save(user);
-    }
 }

@@ -29,6 +29,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     @Query("select u from User u where u.user_name=?1")
     User findUserByUsername(String username);
 
+
     @Query("select u from User u where u.id=?1")
     User findUserByUserId(Long userid);
 
@@ -40,10 +41,8 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     
     @Query(nativeQuery = true,value = "select u.user_name from User u,Custom c where u.id=c.user_id and c.id=?1")
     String findUser(Long custom_id);
-}
-    @Query("select u from User u where u.user_name=?1")
-        //简单查询可以自动根据字段生成
-    User findUserByUsername(String username);
+
+
 
     @Query("select u.password from User u where u.user_name=?1")
 

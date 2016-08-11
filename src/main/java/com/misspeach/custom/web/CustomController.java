@@ -44,7 +44,7 @@ public class CustomController {
 
         //System.out.println("connect!!!!");
 
-        List<Custom> customList=customService.getUserCustoms(userName);
+        //<Custom> customList=customService.getUserCustoms(userName);
         String tmpStr="[";
         for(int i=0;i<customList.size();i++){
             Custom c=customList.get(i);
