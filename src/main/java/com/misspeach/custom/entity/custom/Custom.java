@@ -32,6 +32,10 @@ public class Custom {
 
     private String alarm_time;
 
+    //是否打卡
+    private int isRecorded;
+
+
     //外键
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name="custom_id")
@@ -99,5 +103,13 @@ public class Custom {
 
     public void setAlarm_time(String alarm_time) {
         this.alarm_time = alarm_time;
+    }
+
+    public int getIsRecorded() {
+        return isRecorded;
+    }
+
+    public void setIsRecorded(int isRecorded) {
+        this.isRecorded = isRecorded;
     }
 }

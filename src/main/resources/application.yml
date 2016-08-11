@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: development
+    active: production
   thymeleaf:
     cache: false
 hello: 1000

@@ -5,6 +5,7 @@ import com.misspeach.custom.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,4 +29,13 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u where u.id=?1")
     User findUserByUserId(Long userid);
+
+    @Query("select u.customs from User u")
+    List<Custom> findAllCustoms();
+
+    @Query("select c from Custom c where c.alarm_time=?1 and c.isRecorded=0")
+    List<Custom> findCustoms(String now);
+
+    @Query(nativeQuery = true,value = "select u.user_name from User u,Custom c where u.id=c.user_id and c.id=?1")
+    String findUser(Long custom_id);
 }

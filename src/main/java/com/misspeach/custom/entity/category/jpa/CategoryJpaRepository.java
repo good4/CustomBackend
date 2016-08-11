@@ -9,6 +9,4 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface CategoryJpaRepository extends JpaRepository<Category,Long>{
 
-    @Query("select c.category_image from Category c where c.category_name=?1")
-    String findImageBycategory(String category_name);
 }

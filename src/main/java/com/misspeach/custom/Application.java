@@ -1,5 +1,6 @@
 package com.misspeach.custom;
 
+import com.misspeach.custom.service.TimeTask;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
@@ -20,5 +21,6 @@ public class Application extends SpringBootServletInitializer {
 //        for (String name : names) {
 //            System.out.println(name);
 //        }
+        TimeTask.SendPush();
     }
 }
