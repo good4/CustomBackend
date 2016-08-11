@@ -65,4 +65,5 @@ public class CustomService {
     public void save(Custom custom){
         customJpaRepository.save(custom);
     }
+
 }

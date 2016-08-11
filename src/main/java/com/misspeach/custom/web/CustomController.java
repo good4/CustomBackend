@@ -5,7 +5,9 @@ import com.misspeach.custom.entity.user.User;
 import com.misspeach.custom.service.CustomService;
 import com.misspeach.custom.service.RecordService;
 import com.misspeach.custom.service.UserService;
+//import com.oracle.tools.packager.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +42,9 @@ public class CustomController {
         user=customService.getUserByUsername(userName);
         user_Id=String.valueOf(user.getId());
 
+        //System.out.println("connect!!!!");
+
+        List<Custom> customList=customService.getUserCustoms(userName);
         String tmpStr="[";
         for(int i=0;i<customList.size();i++){
             Custom c=customList.get(i);

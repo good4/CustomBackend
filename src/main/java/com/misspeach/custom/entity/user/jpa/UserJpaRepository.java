@@ -2,6 +2,8 @@ package com.misspeach.custom.entity.user.jpa;
 
 import com.misspeach.custom.entity.custom.Custom;
 import com.misspeach.custom.entity.user.User;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.SQLInsert;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -35,7 +37,17 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
 
     @Query("select c from Custom c where c.alarm_time=?1 and c.isRecorded=0")
     List<Custom> findCustoms(String now);
-
+    
     @Query(nativeQuery = true,value = "select u.user_name from User u,Custom c where u.id=c.user_id and c.id=?1")
     String findUser(Long custom_id);
+}
+    @Query("select u from User u where u.user_name=?1")
+        //简单查询可以自动根据字段生成
+    User findUserByUsername(String username);
+
+    @Query("select u.password from User u where u.user_name=?1")
+
+    String findPasswordByUsername(String username);
+
+
 }

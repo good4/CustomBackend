@@ -19,7 +19,7 @@ public class Custom {
     private Long id;
 
     private String custom_name;
-
+    //分类
     private String category;
     //目标天数
     private int target_day;
