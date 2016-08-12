@@ -5,6 +5,7 @@ import com.misspeach.custom.entity.user.User;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.SQLInsert;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Date;
@@ -49,4 +50,11 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     String findPasswordByUsername(String username);
 
 
+
+    @Query("select u from User u where u.id=?1")
+    User getUserInfo(Long uid);
+
+    @Modifying
+    @Query(value="update User u set u.sex =?2  where u.id = ?1")
+    public void updateName(long id, int sex);
 }
