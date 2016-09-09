@@ -40,6 +40,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     @Query("select c from Custom c where c.alarm_time=?1 and c.isRecorded=0")
     List<Custom> findCustoms(String now);
     
+<<<<<<< HEAD
     @Query(nativeQuery = true,value = "select u.user_name from user u,custom c where u.id=c.user_id and c.id=?1")
     String findUser(Long custom_id);
 
@@ -48,13 +49,29 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     String findPasswordByUsername(String username);
 
 
+=======
+    @Query(nativeQuery = true,value = "select u.user_name from User u,Custom c where u.id=c.user_id and c.id=?1")
+    String findUser(Long custom_id);
+
+
+
+    @Query("select u.password from User u where u.user_name=?1")
+
+    String findPasswordByUsername(String username);
+
+
+
+>>>>>>> f4f6a63a556752bebf35e68a708ae7f473ac5845
     @Query("select u from User u where u.id=?1")
     User getUserInfo(Long uid);
 
     @Modifying
     @Query(value="update User u set u.sex =?2  where u.id = ?1")
     public void updateName(long id, int sex);
+<<<<<<< HEAD
 
     @Query("select u.id from User u where u.user_name=?1")
     Long findUserId(String user_name);
+=======
+>>>>>>> f4f6a63a556752bebf35e68a708ae7f473ac5845
 }

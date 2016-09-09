@@ -14,9 +14,9 @@ import java.util.List;
  */
 
 public interface CustomJpaRepository extends JpaRepository<Custom, Long> {
+
     @Query("select c.records from Custom c where c.id = ?1")
     List<Record> findRecordsByCustomId(Long CustomId);
-
 
     @Query(nativeQuery = true,value = "select * from Record r where r.custom_id=?1 and date(r.date)=?2")
     List<Record> findByCustomIdAndDate(Long id,Date date);
