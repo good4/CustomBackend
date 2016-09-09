@@ -22,15 +22,15 @@ public class User {
     @Column(nullable = true)
     private String password;
 
-    private String email;
+    private String email="";
 
-    private String tel;
+    private String tel="";
 
     private int sex;
 
-    private String brithday;
+    private String brithday="";
 
-    private String signature;
+    private String signature="";
 
     private String image;
 

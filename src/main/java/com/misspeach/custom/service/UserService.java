@@ -32,4 +32,12 @@ public class UserService {
         String password = userJpaRepository.findPasswordByUsername(username);
         return   password;
     }
+
+    public User getUserInfo(Long uid) {  //User在entity的user下定义,
+        return userJpaRepository.getUserInfo(uid);  //getUserInfo在web层中的UserController中定义,名字随便起
+    }
+    public User getUserInfo(String name) {  //User在entity的user下定义,
+        return userJpaRepository.findUserByUsername(name);  //getUserInfo在web层中的UserController中定义,名字随便起
+    }
+
 }

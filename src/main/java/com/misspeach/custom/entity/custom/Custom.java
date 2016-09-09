@@ -34,8 +34,15 @@ public class Custom {
 
     //是否打卡
     private int isRecorded;
-
-
+    public List<Record> getRecords() {
+        return records;
+    }
+    
+    public void setRecords(List<Record> records) {
+        this.records = records;
+    }
+    
+    
     //外键
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name="custom_id")

@@ -66,4 +66,8 @@ public class CustomService {
         customJpaRepository.save(custom);
     }
 
+    //根据习惯名查询习惯ID
+    public Long getCustomId(String customName){
+        return customJpaRepository.findByCustomName(customName);
+    }
 }

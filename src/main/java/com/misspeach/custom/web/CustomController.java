@@ -33,14 +33,14 @@ public class CustomController {
     List<Custom> customList=null;
     User user=null;
     Custom custom=null;
-    String user_Id="";
+    //String user_Id="";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getUserCustoms(String userName){
 //        System.out.println("userName="+userName);
         customList=customService.getUserCustomsByName(userName);
-        user=customService.getUserByUsername(userName);
-        user_Id=String.valueOf(user.getId());
+        //user=customService.getUserByUsername(userName);
+        //user_Id=String.valueOf(user.getId());
 
         //System.out.println("connect!!!!");
 
@@ -61,7 +61,7 @@ public class CustomController {
             tmpStr+="{\"custom_Id\":\"" +custom_Id+"\",\"custom_name\":\""+custom_name+"\",\"alarm_time\":\""+alarm_time+"\",\"insist_day\":\""+insist_day+
                     "\",\"category\":\""+category+"\",\"target_day\":\""+target_day+
                     "\",\"max_insist_day\":\""+max_insist_day+ "\",\"current_insist_day\":\""+current_insist_day+
-                    "\",\"user_Id\":\"" + user_Id + "\",\"isRecorded\":\""+isRecorded+"\"}";
+                    "\",\"isRecorded\":\""+isRecorded+"\"}";
             if(i!=customList.size()-1)
                 tmpStr+=",";
 //            System.out.println(tmpStr);
@@ -107,12 +107,14 @@ public class CustomController {
         custom.setCategory(category);
         custom.setTarget_day(Integer.valueOf(targetDay));
         custom.setCustom_name(customName);
+
         customList=customService.getUserCustomsById(Long.valueOf(userId));
         customList.add(custom);
         user=customService.getUserByUserId(Long.valueOf(userId));
         user.setCustoms(customList);
         userService.save(user);
-        return "insert success";
+        Long custom_id=customService.getCustomId(customName);
+        return String.valueOf(custom_id);
     }
     /*
     * 删除一条习惯
@@ -137,4 +139,5 @@ public class CustomController {
         customService.save(custom);
         return "update success";
     }
+
 }
